@@ -9,5 +9,12 @@ pipeline {
                 }
             }
         }
+        stage('Stateful: Build') {
+            steps {
+                dir('stateful'){
+                        sh './gradlew clean test build'
+                }
+            }
+        }
     }
 }
