@@ -1,0 +1,18 @@
+version: '3' 
+
+services:
+  stateless:
+    build: stateless
+
+  stateful: 
+    build: stateful
+
+  frontend: 
+    build: frontend
+    volumes:
+      - ./frontend/docker/default.conf:/etc/nginx/conf.d/default.conf
+    ports:
+      - "80:80" 
+    links:
+      - "stateless:stateless"
+      - "stateful:stateful"
