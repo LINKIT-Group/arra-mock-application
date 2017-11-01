@@ -9,9 +9,6 @@ pipeline {
                 }
             }
         }
-    }
-
-    stages {
         stage('Stateful: Build') {
             steps {
                 dir('stateful'){
