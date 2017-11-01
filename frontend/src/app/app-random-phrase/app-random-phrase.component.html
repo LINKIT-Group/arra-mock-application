@@ -1,0 +1,8 @@
+<mat-card class="phrase-block">
+  <mat-card-title>Random phrase</mat-card-title>
+  <mat-card-content class="phrase-content"> {{phrase.text}} </mat-card-content>
+  <mat-card-actions class="phrase-actions">
+    <button mat-raised-button (click)="getPhrase()">Get another one</button>
+  </mat-card-actions>
+  <mat-card-footer class="mat-caption phrase-counter">Count: {{count}}</mat-card-footer>
+</mat-card>
