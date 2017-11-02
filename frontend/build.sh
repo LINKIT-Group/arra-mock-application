@@ -1,5 +1,8 @@
 #!/bin/sh
 
+echo "# Angular CLI install"
+npm install -g @angular/cli
+
 echo "# NPM Install"
 npm install
 

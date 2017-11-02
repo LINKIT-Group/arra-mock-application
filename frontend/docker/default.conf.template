@@ -1,5 +1,5 @@
 server {
-    listen       80;
+    listen       ${PORT};
     server_name  localhost;
 
     #charset koi8-r;
@@ -11,11 +11,11 @@ server {
     }
 
     location ~ /phrases/random {
-       proxy_pass http://stateless;
+       proxy_pass ${SERVER_STATELESS};
     }
 
     location ~ /phrases/(\d+)/count {
-       proxy_pass http://stateful;
+       proxy_pass ${SERVER_STATEFUL};
     }
 
     #error_page  404              /404.html;

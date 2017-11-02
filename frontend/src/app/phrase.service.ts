@@ -8,9 +8,8 @@ import { environment } from '../environments/environment';
 @Injectable()
 export class PhraseService {
 
-  // TODO: move to environment
-  private statelessServer = environment != null && environment.statelessServer != null ? environment.statelessServer : 'http://localhost';
-  private statefulServer = environment != null && environment.statefulServer != null ? environment.statefulServer : 'http://localhost';
+  private statelessServer = environment != null && environment.statelessServer != null ? environment.statelessServer : '';
+  private statefulServer = environment != null && environment.statefulServer != null ? environment.statefulServer : '';
 
   private randomPhraseUrl = '/phrases/random';
   private countPhraseUrl = '/phrases/{id}/count';
@@ -19,8 +18,6 @@ export class PhraseService {
   constructor(private http: Http) { }
 
   getRandomPhrase(): Promise<Phrase> {
-
-    console.log('Url: ' + this.statelessServer + this.randomPhraseUrl);
     return this.http.get(this.statelessServer + this.randomPhraseUrl)
       .toPromise()
       .then(response => response.json() as Phrase)
