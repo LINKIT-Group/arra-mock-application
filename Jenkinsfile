@@ -1,10 +1,5 @@
 pipeline {
-    agent {
-        docker {
-            image 'openjdk:8-jdk-slim'
-            args '-v $HOME/.m2:/root/.m2'
-        }
-    }
+    agent any    
     stages {
         stage('Stateless: Build') {
             steps {
@@ -21,12 +16,9 @@ pipeline {
             }
         }
 	stage('Frontend: Build') {
-	    agent {
-                docker { image 'node:8-slim' }
-            }
             steps {
                 dir('frontend'){
-                        sh './build.sh'
+                        sh 'echo "We need docker or node here!"'
                 }
             }
         }
