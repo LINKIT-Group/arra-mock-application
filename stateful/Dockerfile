@@ -8,8 +8,9 @@ LABEL vendor=LINKIT \
 
 ADD build/libs/stateful-*.jar /app.jar
 
-EXPOSE 8080
+ENV JAVA_OPTS="" \
+    PORT=80
 
-ENV JAVA_OPTS=""
+EXPOSE $PORT
 
-ENTRYPOINT ["sh", "-c", "java $JAVA_OPTS -Djava.security.egd=file:/dev/./urandom -jar /app.jar -Dserver.port=8080"]
+CMD ["sh", "-c", "java $JAVA_OPTS -Djava.security.egd=file:/dev/./urandom -jar /app.jar"]

@@ -1,18 +1,24 @@
 pipeline {
-    agent any
-
+    agent any    
     stages {
         stage('Stateless: Build') {
             steps {
                 dir('stateless'){
-                        sh './gradlew clean test build'
+                        sh './build.sh'
                 }
             }
         }
         stage('Stateful: Build') {
             steps {
                 dir('stateful'){
-                        sh './gradlew clean test build'
+                        sh './build.sh'
+                }
+            }
+        }
+	stage('Frontend: Build') {
+            steps {
+                dir('frontend'){
+                        sh 'echo "We need docker or node here!"'
                 }
             }
         }
